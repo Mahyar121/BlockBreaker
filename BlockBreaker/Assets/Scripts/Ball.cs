@@ -8,7 +8,7 @@ public class Ball : MonoBehaviour {
 
     private bool hasStarted = false;
     private Vector3 paddleToBallVector;
-    private Vector3 startPos;
+    
 
 	// Use this for initialization
 	void Start ()
@@ -26,9 +26,9 @@ public class Ball : MonoBehaviour {
         {
             // Lock the ball relative to the paddle
             this.transform.position = paddle.transform.position + paddleToBallVector;
-            startPos = this.transform.position;
+            
             // Wait for a mouse press to launch
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetMouseButton(0))
             {
                 hasStarted = true;
                 this.GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 10f);
@@ -36,4 +36,13 @@ public class Ball : MonoBehaviour {
         }
        
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Vector2 tweak = new Vector2(Random.Range(0f, 0.1f), Random.Range(0f,0.2f));
+        if (hasStarted)
+        {
+            this.GetComponent<Rigidbody2D>().velocity += tweak;
+        }
+    }
 }
