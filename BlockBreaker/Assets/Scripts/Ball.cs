@@ -8,12 +8,15 @@ public class Ball : MonoBehaviour {
 
     private bool hasStarted = false;
     private Vector3 paddleToBallVector;
+    private Vector3 startPos;
 
 	// Use this for initialization
 	void Start ()
     {
+        paddle = GameObject.FindObjectOfType<Paddle>();
         // difference between ball location and paddle location
         paddleToBallVector = this.transform.position - paddle.transform.position;
+        
 	}
 	
 	// Update is called once per frame
@@ -23,9 +26,9 @@ public class Ball : MonoBehaviour {
         {
             // Lock the ball relative to the paddle
             this.transform.position = paddle.transform.position + paddleToBallVector;
-
+            startPos = this.transform.position;
             // Wait for a mouse press to launch
-            if (Input.GetMouseButton(0))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 hasStarted = true;
                 this.GetComponent<Rigidbody2D>().velocity = new Vector2(2f, 10f);

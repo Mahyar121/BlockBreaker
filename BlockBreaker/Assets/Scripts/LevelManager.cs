@@ -19,4 +19,10 @@ public class LevelManager : MonoBehaviour {
     {
         SceneManager.LoadScene("Start");
     }
+
+    private void Update()
+    {
+        
+    }
+
 }
