@@ -1,2 +1,2 @@
 # BlockBreaker
-Block breaking game created with the Unity Engine from the Unity Course
+I learned how to develop this game thanks to teh Unity Course from udemy.com
